@@ -155,5 +155,17 @@ from reddit:
 
 _Ok, being serious, this falls in the territory of "technically anything is possible." Yes, you can probably create your own BIOS but it's going to be an enormous and extremely complex project._
 
-I guess screw it for now we'll write a bootloader later when we need it
-for now we have one.
+
+[Writing Hello World Bootloader](https://viralpatel.net/taj/tutorial/hello_world_bootloader.php)
+
+```assembly
+[BITS 16]	                    ;tell the assembler that its a 16 bit code
+[ORG 0x7C00]	                ;Origin, tell the assembler that where the code will
+
+                                ;be in memory after it is been loaded
+
+JMP $ 		                    ;infinite loop
+
+TIMES 510 - ($ - $$) db 0	    ;fill the rest of sector with 0
+DW 0xAA55			            ; add boot signature at the end of bootloader
+```
