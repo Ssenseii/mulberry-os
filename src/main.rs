@@ -1,3 +1,12 @@
+/*
+    1. BootLoad
+*/
+
+mod boot;
+
 fn main() {
-    println!("Hello, world!");
+    println!("Mulberry OS");
+    println!("For the Enchanted");
+
+
 }

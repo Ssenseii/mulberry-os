@@ -1,5 +1,7 @@
 # MulBerry OS
 
+*_salvation through suffering_*
+
 Building an Operating System Using Only Wikipedia and Rust Documentation.
 We'll avoid using good due to the Google AI Response Unavoidability.
 
@@ -10,7 +12,7 @@ We'll avoid using good due to the Google AI Response Unavoidability.
 	- NO OS tutorials, or How-to build, or anything that basically does the work for you and you follow along into a finished project. 
 	- You may look at existing OS repositories, No copy-pasting code in any form.
 	- Documentation Allowed: Wikipedia, Rust Docs. 
-    - In case of hard deadlocks: you may use the references used by wikipedia unless they challenge the rules above (acceptable: arcane wizard books (pre-2010), scientific articles...)
+    - In case of hard deadlocks: you may use the references used by wikipedia unless they challenge the rules above (acceptable: arcane wizard books (pre-2000s), scientific articles...)
 	- Have Fun.
 
 ## Environment:
