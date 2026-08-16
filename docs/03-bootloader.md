@@ -150,4 +150,10 @@ BIOS has 4 main functions:
     - BIOS: Software/Drivers which interface between the OS and the hardware
     - CMOS: config program: computer passwords, time, and date.
 
+...
+from reddit:
 
+_Ok, being serious, this falls in the territory of "technically anything is possible." Yes, you can probably create your own BIOS but it's going to be an enormous and extremely complex project._
+
+I guess screw it for now we'll write a bootloader later when we need it
+for now we have one.
