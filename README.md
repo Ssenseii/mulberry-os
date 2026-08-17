@@ -30,5 +30,10 @@ Build a Certain Taste and Aesthetic in Writing Code.
 
 Wikipedia
 Rust Documentation Pages
-Structured Computer Organisation, 6th Edition
-[Original MAC](https://infinitemac.org/1984/System%201.0)
+Books from the wikipedia references
+Articles from the wikipedia references
+Scientific Papers from the wikipedia references
+Github Code
+Github Provided-Books
+Arcane Personal Blogs from 1990-2010
+Stack Overflow when the shit hit the fan with Qemu and Bootloading

@@ -167,5 +167,5 @@ _Ok, being serious, this falls in the territory of "technically anything is poss
 JMP $ 		                    ;infinite loop
 
 TIMES 510 - ($ - $$) db 0	    ;fill the rest of sector with 0
-DW 0xAA55			            ; add boot signature at the end of bootloader
+DW 0xAA55			            ;add boot signature at the end of bootloader
 ```

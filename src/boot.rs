@@ -1,3 +1,4 @@
+use std::fs;
 use std::fs::File;
 use std::io::Cursor;
 use std::sync::Arc;
@@ -12,8 +13,14 @@ use hadris_iso::write::{File as IsoFile, InputFiles, IsoImageWriter};
 pub fn create_bootable_iso() {
     let mut boot_image_bytes = vec![0u8; 2048];
 
-    boot_image_bytes[0] = 0xEB; // jmp
-    boot_image_bytes[1] = 0xFE; // -2 infinie loop
+    // boot_image_bytes[0] = 0xEB; // jmp
+    // boot_image_bytes[1] = 0xFE; // -2 infinie loop
+
+    let contents = fs::read_to_string("src/boot.asm").expect("Could Not Read Boot Assembly");
+
+    boot_image_bytes = contents.as_bytes().into();
+    println!("{boot_image_bytes:#?}");
+    println!("___");
 
     let readme_content = b"This is a bootable ISO";
 
@@ -86,7 +93,7 @@ pub fn create_bootable_iso() {
     let iso_data = buffer.into_inner();
     std::fs::write("mulberry.iso", &iso_data).expect("Failed to write the ISO file");
 
-    println!("Created bootable.iso ({} bytes)", iso_data.len());
+    println!("Created mulberry.iso ({} bytes)", iso_data.len());
 }
 
 
