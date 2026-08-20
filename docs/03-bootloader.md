@@ -158,14 +158,94 @@ _Ok, being serious, this falls in the territory of "technically anything is poss
 
 [Writing Hello World Bootloader](https://viralpatel.net/taj/tutorial/hello_world_bootloader.php)
 
-```assembly
-[BITS 16]	                    ;tell the assembler that its a 16 bit code
-[ORG 0x7C00]	                ;Origin, tell the assembler that where the code will
+[BootBoot Codebase And Specification](https://gitlab.com/bztsrc/bootboot/-/blob/master/x86_64-bios/fs.inc?ref_type=heads)
 
-                                ;be in memory after it is been loaded
+---
 
-JMP $ 		                    ;infinite loop
+It's been three days, and I'm tired boss.
+i can't build it.
+I read the structured computer systems, I read more than I could.
 
-TIMES 510 - ($ - $$) db 0	    ;fill the rest of sector with 0
-DW 0xAA55			            ;add boot signature at the end of bootloader
-```
+This is the final try:
+[MIKEOS](https://mikeos.sourceforge.net/write-your-own-os.html)
+
+I'll try not to copy paste and understand the text.
+
+this is my attempt, if it fails, I give up on this project until i learn systems programming.
+
+---
+
+okay; from the requirements it seems we're going to need what's called `nasm`.
+
+I've went through 100s of documents this is the first time I see this
+
+so after the hardware boot, comes the software boot from any media it can find, so far so good, it's following what I learned. 
+MBR which is a 512-byte section in the hard drive, or a cd rom or floppy, depending on the boot order or what we pick in qemu.
+
+two special nulbers in the end to tell it it's a boot sector?
+but I thought it goes at the start? the JMP thing.
+
+as I discovered, yes you need assembly to write a bootloader.
+
+as I also have discovered, the CPU has registers which is what we use, so far this follows all I had learned.
+
+I don't, however, understand assembly, so this is nice.
+
+AX, BX, CX, DX: register variables for numbers.
+SI, DI: Source and Destination data index registers.
+SP: Stack Pointer
+IP/CP: Instruction/code pointer, location of the instruction that's being executed and increments when it's finished.
+
+Stack is as we've already learned by studying rust, is the stack of plates thing: FILO.  
+
+we use hexadecimal because computers are better with binary.
+0 to F
+
+hex to dec:
+0Ah = 10
+0Bh = 11
+
+hec asm to dec
+0x0A = 10
+0x14 = 20
+
+More Assembly:
+
+mov: copy from one register to another.
+mov ax, 50: place the number 50 in ax;
+mov ax, [bx]: place the number in bx into ax;
+
+add/sub: self defining
+add ax, FFh: add 0xFF (255) to the ax register
+
+cmp: there's a special FLAGS register that holds the value of 
+the last operation
+cmp cx, 12: if 12 is bigger than cx: negative value
+
+jmp: jump to a specific part of code.
+
+int: interrupt the program, set by the O-OS, 
+for example in ms-dos, int 21h provides DOS services
+int 10h, 13h, 14h... to print strings, read sectors...
+
+...
+
+I memorized the ASM and I'm happy to REPORT IT FUCKING WORKED YESSSS
+I FINALLY UNDERSTAND THE MISTAKE I WAS DOING OMG IT TOOK WAY TOO LONG AND I'M WAAAYY TOO STUPID
+
+jesus christ I was doing it right the whole time my only problem was that **I wasn't compiling the assembly language to binary**
+
+THIS COULD HAVE BEEN ONE AI PROMPT DAWG.
+but man I learned so much about computers I'm actually quite happy.
+If it didn't take as long as 3 days of studying, I would have been happier but man, I'm glad.
+
+It's booting now.
+Now I need to go learn more about assembly.
+
+---
+
+_to those following_
+
+all I had to do was use nasm to complite the boot.asm file into boot.bin, fs::read it using rust into a vec<u8> and load it.
+
+mulberry OS's BOOT LOADER is a go for x86 architecture, I don't care about everything else, for now it's running for me.!!!!!

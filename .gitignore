@@ -1,3 +1,7 @@
 /target
+
 *.iso
+*.bin
+
+example
 docs/pdf
